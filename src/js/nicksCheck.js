@@ -4,9 +4,9 @@ export default class Validator {
     this.validateUsername(this.userName);
   }
 
- validateUsername(name) {
-    if (/^[0-9.\-_]/.test(name) || /[0-9.\-_]$/.test(name) || /([0-9])\1{3}/.test(name)) { //   /^[0-9\.\-\_]/.test(name) || /[0-9\.\-\_]$/.test(name) || /([0-9])\1{3}/.test(name)
-      throw new Error('Неподходящий nickname');
+  validateUsername(name) { // eslint-disable-line
+    if (/([0-9])\1{3}/.test(name) || /[^\w_/-]/.test(name) || /^[0-9.\-_]|[0-9.\-_]$/.test(name)) {
+      throw new Error('Неподходящий формат имени');
     }
   }
 }
